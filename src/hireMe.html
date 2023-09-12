@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Hire me
+    </title>
+</head>
+<body>
+    <h1>Place your information</h1>
+    <form action="Thankyou.html">
+        <label for="firstName">First Name:</label>
+        <input name="firstName" id="firstName" type="text" autocomplete="given-name" />
+        
+        <br>
+        <br>
+
+        <label for="lastName">Last Name:</label>
+        <input name="lastName" id="lastName" type="text" autocomplete="family-name" />
+
+        <br>
+        <br>
+
+        <label for="typeofcompany"> Type of company </label>
+        <select id="type" name="typeofcompany">
+            <option value="Pcompany">Profit company</option>
+            <option value="NPcompany">Non-profit company</option>
+            <option value="Startup">Startup company</option>
+        </select>
+
+        <br>
+        <br>
+
+        <label for="Experience"> What of my experience you would like to use ? </label>
+        <input list="Experiences" name="Experience" id="Experience">
+        <datalist id="Experiences">
+            <option value="Machine learning">
+            <option value="Backend">
+            <option value="Frontend">
+            <option value="Fullstack">
+        </datalist>
+
+        <br>
+        <br>
+
+        <label for="salary">Salary:</label>
+        <input name="salary" id="salary" type="text"/>
+        
+        <br>
+        <br>
+
+        <input type="submit" title="Send">
+    </form>
+    
+    <a href="Exercise1.html"> Back </a>
+</body>
