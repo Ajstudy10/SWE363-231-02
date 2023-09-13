@@ -1,0 +1,17 @@
+thead{
+    text-transform: uppercase;
+}
+a{
+    color:green;
+    text-decoration: none;
+}
+td.top{
+    background-color: rgba(239, 117, 47, 0.806) ;
+}
+em{
+    background-color: blue;
+}
+em#the_most_important{
+    text-transform: uppercase;
+    background-color: rgba(239, 117, 47, 0.806) ;
+}

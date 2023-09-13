@@ -1,6 +1,6 @@
 body{
-    background-color: black;
-    color:white;
+    background-color:  #F2ECCE;
+    color: #022601;
 }
 a{
     color:lightblue;
@@ -11,4 +11,7 @@ a:visited{
 }
 a:hover{
     font-weight: bold;
+}
+image{
+    display: inline;
 }
