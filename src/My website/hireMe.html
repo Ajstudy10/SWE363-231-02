@@ -1,58 +1,78 @@
 <!DOCTYPE html>
-<head>
-    <title>
-        Hire me
-    </title>
-    <link rel="stylesheet" href="dark_theme.css"/>
-</head>
-<body>
-    <main>
-        <h1>Place your information</h1>
-        <!-- First and last name boxes-->
-        <form action="Thankyou.html">
-            <label for="firstName">First Name:</label>
-            <input name="firstName" id="firstName" type="text" autocomplete="given-name" />
+<html>
+    <head>
+        <title>
+            Hire me
+        </title>
+        <link rel="stylesheet" href="dark_theme.css"/>
+    </head>
+    <body>
+        <main>
+            <h1>Place your information</h1>
+            <!-- First and last name boxes-->
+            <form action="Thankyou.html">
+                <label for="firstName">First Name:</label>
+                <input name="firstName" id="firstName" type="text" autocomplete="given-name" />
+                
+                <br>
+                <br>
+    
+                <label for="lastName">Last Name:</label>
+                <input name="lastName" id="lastName" type="text" autocomplete="family-name" />
+    
+                <br>
+                <br>
+            <!-- Type of company select-->
+                <label for="typeofcompany"> Type of company </label>
+                <select id="type" name="typeofcompany">
+                    <option value="Pcompany">Profit company</option>
+                    <option value="NPcompany">Non-profit company</option>
+                    <option value="Startup">Startup company</option>
+                </select>
+    
+                <br>
+                <br>
+            <!-- Experiences-->
+                <label for="Experience"> What of my experience you would like to use ? </label>
+                <input list="Experiences" name="Experience" id="Experience">
+                <datalist id="Experiences">
+                    <option value="Machine learning">
+                    <option value="Backend">
+                    <option value="Frontend">
+                    <option value="Fullstack">
+                </datalist>
+    
+                <br>
+                <br>
+            <!-- Salary -->
+                <label for="salary">Salary:</label>
+                <input name="salary" id="salary" type="text"/>
+                
+                <br>
+                <br>
+    
+                <input type="submit" title="Send">
+            </form>
             
-            <br>
-            <br>
-
-            <label for="lastName">Last Name:</label>
-            <input name="lastName" id="lastName" type="text" autocomplete="family-name" />
-
-            <br>
-            <br>
-        <!-- Type of company select-->
-            <label for="typeofcompany"> Type of company </label>
-            <select id="type" name="typeofcompany">
-                <option value="Pcompany">Profit company</option>
-                <option value="NPcompany">Non-profit company</option>
-                <option value="Startup">Startup company</option>
-            </select>
-
-            <br>
-            <br>
-        <!-- Experiences-->
-            <label for="Experience"> What of my experience you would like to use ? </label>
-            <input list="Experiences" name="Experience" id="Experience">
-            <datalist id="Experiences">
-                <option value="Machine learning">
-                <option value="Backend">
-                <option value="Frontend">
-                <option value="Fullstack">
-            </datalist>
-
-            <br>
-            <br>
-        <!-- Salary -->
-            <label for="salary">Salary:</label>
-            <input name="salary" id="salary" type="text"/>
-            
-            <br>
-            <br>
-
-            <input type="submit" title="Send">
-        </form>
-        
-        <a href="Exercise1.html"> Back </a>
-    </main>
-</body>
+            <a href="Exercise1.html"> Back </a>
+        </main>
+    </body>
+    <footer>
+        <!--               Links to all pages                                        -->
+        <a href="details.html", style="padding-right: 1cm;">
+            Details
+        </a>
+        <a href="mailto:ajstudy4@gmail.com", style="padding-right: 1cm;">My email </a>
+    
+        <br>
+        <a href="contact.html", style="padding-right: 1cm;">
+            contact me
+        </a>
+        <br>
+        <a href="hireMe.html">
+            Hire me
+        </a>
+        <!--               Copyright                                     -->
+        <p>&copy; Abdullah Jan2023</p>
+    </footer>
+</html>

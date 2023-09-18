@@ -15,3 +15,41 @@ em#the_most_important{
     text-transform: uppercase;
     background-color: rgba(239, 117, 47, 0.806) ;
 }
+h2{
+    font-family: sans-serif;
+}
+:is(h1,h2,h3,h4,h5,h6) {
+    text-transform: uppercase;
+}
+h2 p::first-letter {
+    font-size: x-large;
+}
+tbody :nth-child(even){
+    background-color: red;
+}
+tbody :nth-child(odd){
+    background-color: blue;
+}
+table tr:hover {
+    background-color: aqua;
+  }
+li{
+    display: inline;
+}
+li:first-child{
+    text-decoration: underline;
+}
+
+::selection{
+    background: red;
+}
+section a:hover{
+    cursor: pointer;
+}
+input[type=text]{
+    height: 20px;
+    border-color: lightgrey;
+}
+input[name=name], input[name=message]{
+    height: 50px;
+}
