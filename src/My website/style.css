@@ -22,11 +22,14 @@ a:visited{
 a:hover{
     font-weight: bold;
     text-align: center;
+    background-color:chartreuse;
+    transition: 1s;
 }
 a{
     color:lightblue;
     text-decoration: none;
     text-align: center;
+    transition-property: background-color;
 }
 
 h1{
@@ -54,3 +57,17 @@ table{
     line-height: normal;
 }
 
+.appear{
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.appear .d1+#hamburger:hover{
+    transition-delay: 0.5s;
+}
+
+.appear .d2+#hamburger:hover{
+    transition-delay: 1s;
+}
+.appear .d3+#hamburger:hover{
+    transition-delay: 1.5s;
+}
