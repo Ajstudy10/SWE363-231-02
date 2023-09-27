@@ -57,17 +57,44 @@ table{
     line-height: normal;
 }
 
-.appear{
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-.appear .d1+#hamburger:hover{
-    transition-delay: 0.5s;
+.hamburger:hover + .appear li{
+    opacity: 1;
 }
 
-.appear .d2+#hamburger:hover{
+.appear li{
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
+}
+
+.appear li:nth-child(1){
+    transition-delay: 0.5s;
+}
+.appear li:nth-child(2){
     transition-delay: 1s;
 }
-.appear .d3+#hamburger:hover{
+.appear li:nth-child(3){
     transition-delay: 1.5s;
 }
+
+.heart{
+    animation-duration: 3s;
+    animation-name: beat;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes beat {
+    from {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(2,2);
+    }
+    75% {
+        transform: scale(1.5,1.5);
+    }
+    to {
+        transform: scale(2,2);
+    }
+  }
