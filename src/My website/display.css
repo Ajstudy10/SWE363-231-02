@@ -11,7 +11,7 @@ body{
 li {
     display: inline-block;
     border-radius: 100px;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #6EEB83;
     text-align: center;
 }
@@ -37,9 +37,8 @@ h2{
 }
 
 h1{
-    
     font-family: Lexend Deca;
-    font-size: 60px;
+    font-size: 64px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -48,7 +47,7 @@ h1{
 p{
     
     font-family: Lexend Deca;
-    font-size: 16px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -56,7 +55,7 @@ p{
 
 table{
     font-family: Lexend Deca;
-    font-size: 20px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -129,13 +128,13 @@ table{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 16px;
+    margin: 20px;
 }
 
 .topic {
     overflow: hidden;
     max-width: 500px; 
-    padding: 14px; 
+    padding: 10px; 
 }
 
 .topic img {
@@ -153,7 +152,7 @@ table{
     justify-content: space-between; /* Align title and date to opposite sides */
     align-items: center; /* Vertically align title and date */
     width: 100%; /* Ensure .content spans full width */
-    margin-bottom: 26px;
+    margin-bottom: 13px; /* Changed the margin bottom*/
 }
 
 .tags li {
@@ -164,5 +163,5 @@ table{
     text-align: center;
 }
 .tags{
-    margin-right: 21px;
+    margin-right: 16px;
 }
