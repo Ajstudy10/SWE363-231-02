@@ -98,3 +98,21 @@ table{
         transform: scale(2,2);
     }
   }
+
+  section{
+    float: right;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .watermark {
+    position: absolute;
+    top: 10px; /* Adjust the vertical position of the watermark */
+    left: 10px; /* Adjust the horizontal position of the watermark */
+    font-size: 12px; /* Adjust the font size as desired */
+    color: rgb(255, 0, 0); /* Adjust the text color and opacity as desired */
+    pointer-events: none; /* This prevents the watermark from being clickable */
+  }
