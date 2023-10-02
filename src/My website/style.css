@@ -140,17 +140,20 @@ table{
 
 .topic img {
     max-width: 100%;
+    margin-bottom: 11px;
 }
 
 .tags p{
     color: #60BF6E;
     font-size: 15px;
 }
+
 .content {
     display: flex;
     justify-content: space-between; /* Align title and date to opposite sides */
     align-items: center; /* Vertically align title and date */
     width: 100%; /* Ensure .content spans full width */
+    margin-bottom: 26px;
 }
 
 .tags li {
@@ -159,4 +162,7 @@ table{
     padding: 5px;
     border: 1px solid #6EEB83;
     text-align: center;
+}
+.tags{
+    margin-right: 21px;
 }
