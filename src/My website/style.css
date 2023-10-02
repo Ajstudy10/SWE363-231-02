@@ -5,6 +5,7 @@ body{
     font-family: 'Lexend Deca', sans-serif;
     background-color: #272727;
     color: #6EEB83;
+    text-align: center;
 }
 
 li {
@@ -31,6 +32,9 @@ a{
     text-align: center;
     transition-property: background-color;
 }
+h2{
+    text-align: center;
+}
 
 h1{
     
@@ -49,12 +53,15 @@ p{
     font-weight: 400;
     line-height: normal;
 }
+
 table{
     font-family: Lexend Deca;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .hamburger:hover + .appear li{
@@ -99,11 +106,10 @@ table{
     }
   }
 
-  section{
-    float: right;
-  }
-
-  .image-container {
+  footer{
+    text-align: center;
+}
+  .image-container1 {
     position: relative;
     display: inline-block;
   }
@@ -116,3 +122,41 @@ table{
     color: rgb(255, 0, 0); /* Adjust the text color and opacity as desired */
     pointer-events: none; /* This prevents the watermark from being clickable */
   }
+
+  
+  .topics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.topic {
+    overflow: hidden;
+    max-width: 500px; 
+    padding: 10px; 
+}
+
+.topic img {
+    max-width: 100%;
+}
+
+.tags p{
+    color: #60BF6E;
+    font-size: 15px;
+}
+.content {
+    display: flex;
+    justify-content: space-between; /* Align title and date to opposite sides */
+    align-items: center; /* Vertically align title and date */
+    width: 100%; /* Ensure .content spans full width */
+}
+
+.tags li {
+    display: inline-block;
+    border-radius: 100px;
+    padding: 5px;
+    border: 1px solid #6EEB83;
+    text-align: center;
+}
