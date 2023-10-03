@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .cell {
+            font-family: sans-serif;
+            font-size: larger;
+            font-weight: bolder;
+            background-color: beige;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .cell:hover {
+            background-color: blanchedalmond;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        #turn {
+            margin-top: 20px;
+        }
+
+        #reset-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: larger;
+            background-color: lightgray;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="turn">
+        Now it's <span>X</span>'s turn
+    </h1>
+    <!-- Board -->
+    <div class="board">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+    <button id="reset-button">Reset Game</button>
+    <script>
+        let turn = "X";
+        let gameEnded = false;
+        const cells = document.querySelectorAll(".cell");
+        const turnElement = document.querySelector("#turn span");
+        const resetButton = document.getElementById("reset-button");
+
+        // Winning combinations
+        const winCombos = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+
+        // Initialize the game
+// Initialize the game
+        function startGame() {
+            turn = "X";
+            gameEnded = false;
+            turnElement.innerText = turn;
+            cells.forEach(cell => {
+                cell.innerText = "";
+                cell.style.backgroundColor = "beige";
+                cell.addEventListener("click", cellClicked);
+            });
+        }
+
+
+        // Handle cell click
+        function cellClicked(event) {
+            const cell = event.target;
+            if (cell.innerText === "" && !gameEnded) {
+                cell.innerText = turn;
+                cell.style.backgroundColor = "lightblue";
+                checkWin();
+                toggleTurn();
+            }
+        }
+
+        // Toggle the current player's turn
+        function toggleTurn() {
+            turn = turn === "X" ? "O" : "X";
+            turnElement.innerText = turn;
+        }
+
+        // Check for a win
+        function checkWin() {
+            for (const combo of winCombos) {
+                const [a, b, c] = combo;
+                if (cells[a].innerText && cells[a].innerText === cells[b].innerText && cells[a].innerText === cells[c].innerText) {
+                    gameEnded = true;
+                    cells[a].style.backgroundColor = "lightgreen";
+                    cells[b].style.backgroundColor = "lightgreen";
+                    cells[c].style.backgroundColor = "lightgreen";
+                    document.querySelector("#turn").innerText = `${turn} wins!`;
+                    return;
+                }
+            }
+            // Check for a draw
+            if ([...cells].every(cell => cell.innerText !== "")) {
+                gameEnded = true;
+                document.querySelector("#turn").innerText = "It's a Draw!";
+            }
+        }
+
+        // Reset the game
+        resetButton.addEventListener("click", startGame);
+
+        // Start the game initially
+        startGame();
+
+    </script>
+</body>
+
+</html>

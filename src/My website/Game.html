@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            grid-gap: 5px;
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+        }
+
+        .snake {
+            background-color: #00ff00;
+        }
+
+        .food {
+            background-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-board"></div>
+    <script>
+        
+const numRows = 4;
+const numCols = 4;
+let snake = [{ row: 0, col: 0 }];
+let food = generateFood();
+let direction = 'right'; // Initial direction
+
+function generateFood() {
+    let foodCell;
+    do {
+        foodCell = {
+            row: Math.floor(Math.random() * numRows),
+            col: Math.floor(Math.random() * numCols)
+        };
+    } while (isSnakeOnCell(foodCell));
+    return foodCell;
+}
+
+function isSnakeOnCell(cell) {
+    return snake.some(segment => segment.row === cell.row && segment.col === cell.col);
+}
+
+function updateGameBoard() {
+    const gameBoard = document.getElementById('game-board');
+    gameBoard.innerHTML = '';
+
+    for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+
+            if (isSnakeOnCell({ row, col })) {
+                cell.classList.add('snake');
+            }
+
+            if (food.row === row && food.col === col) {
+                cell.classList.add('food');
+            }
+
+            gameBoard.appendChild(cell);
+        }
+    }
+}
+
+function moveSnake() {
+    const head = { ...snake[0] };
+
+    // Update the head based on the current direction
+    if (direction === 'up') {
+        head.row = (head.row - 1 + numRows) % numRows; // Move up
+    } else if (direction === 'down') {
+        head.row = (head.row + 1) % numRows; // Move down
+    } else if (direction === 'left') {
+        head.col = (head.col - 1 + numCols) % numCols; // Move left
+    } else if (direction === 'right') {
+        head.col = (head.col + 1) % numCols; // Move right
+    }
+
+    // Add the new head to the front of the snake
+    snake.unshift(head);
+
+    // Check if the snake ate the food
+    if (food.row === head.row && food.col === head.col) {
+        // Generate new food
+        food = generateFood();
+    } else {
+        // Remove the tail segment if the snake didn't eat food
+        snake.pop();
+    }
+}
+
+function gameLoop() {
+    moveSnake();
+    updateGameBoard();
+    setTimeout(gameLoop, 1000); // Adjust the delay to control the game speed
+}
+
+// Event listener for keyboard input
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowUp' && direction !== 'down') {
+        direction = 'up';
+    } else if (event.key === 'ArrowDown' && direction !== 'up') {
+        direction = 'down';
+    } else if (event.key === 'ArrowLeft' && direction !== 'right') {
+        direction = 'left';
+    } else if (event.key === 'ArrowRight' && direction !== 'left') {
+        direction = 'right';
+    }
+});
+
+gameLoop();
+    </script>
+</body>
+</html>
