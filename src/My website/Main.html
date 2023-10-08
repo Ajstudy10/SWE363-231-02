@@ -57,40 +57,79 @@
     Some interesting topics i have learned
 </h2>
 
-<div class="topics">
-        <div class="topic">
-            <img src="Assets/Stack.png" alt="Image 1" width="500">
-            <div class="content">
-            <h3 class="title">Stack</h3>
-            <p class="date">October 2, 2023</p>
-        </div>
-        <p> This data structure uses Last in First out (LIFO), which can be useful for many applications for instance: paralimeter matching and runtime code excution. Stacks can be impliment in many ways for example, it can be impliment as an array but that come in a cost of space.</p>
-        <li class="tags"><p> Data structures </p></li>
-        <li class="tags"><p> Algorithms </p></li>
-    </div>
+<div id="topics">
 
-    <div class="topic">
-        <img src="Assets/Queue.png" alt="Image 1" width="500">
-        <div class="content">
-            <h3 class="title">Queue</h3>
-            <p class="date">October 2, 2023</p>
-        </div>
-        <p> This data strucutre uses First in First out (FIFO), which can be useful for many applications for instance: data processing, networking and os. Queues can be impliment many ways for example, Circuler arrays and linked list.</p>
-        <li class="tags"><p> Data structures </p></li>
-        <li class="tags"><p> Algorithms </p></li>
-    </div>
+</div>
 
-    <div class="topic">
-        <img src="Assets/Recursion.png" alt="Image 1" width="500">
-        <div class="content">
-            <h3 class="title">Recursion</h3>
-            <p class="date">October 2, 2023</p>
-        </div>
-            <p> Recursion is a technique where a function calls itself to solve a problem by breaking it down into simpler instances.</p>
-            <li class="tags"><p> Recursion </p></li>
-            <li class="tags"><p> Algorithms </p></li>
-        </div>
+<script>
+    posts = 
+[
+    {
+        src:"Assets/Stack.png",
+        title:"Stack",
+        brief:"This data structure uses Last in First out (LIFO), which can be useful for many applications for instance: paralimeter matching and runtime code excution. Stacks can be impliment in many ways for example, it can be impliment as an array but that come in a cost of space.",
+        tags:["Data structures","Algorithms"]
+    }
+    ,
+    {
+        src:"Assets/Queue.png",
+        title:"Queue",
+        brief:"This data strucutre uses First in First out (FIFO), which can be useful for many applications for instance: data processing, networking and os. Queues can be impliment many ways for example, Circuler arrays and linked list.",
+        tags:["Data structures","Algorithms"]
+    },
+    {
+        src:"Assets/Recursion.png",
+        title:"Recursion",
+        brief:"Recursion is a technique where a function calls itself to solve a problem by breaking it down into simpler instances.",
+        tags:["Recursion","Algorithms"]
+    }
+]
 
+const container = document.getElementById("topics");
+
+// Loop through the posts array
+for (const post of posts) {
+  // Create elements for the post
+  const postDiv = document.createElement("div");
+  postDiv.className = "topic";
+
+  const img = document.createElement("img");
+  img.src = post.src;
+  img.alt = "Image 1";
+  img.width = "500";
+
+  const contentDiv = document.createElement("div");
+  contentDiv.className = "content";
+
+  const title = document.createElement("h3");
+  title.className = "title";
+  title.textContent = post.title;
+
+  const briefParagraph = document.createElement("p");
+  briefParagraph.textContent = post.brief;
+
+  const tagsList = document.createElement("ul");
+  tagsList.className = "tags";
+
+  for (const tag of post.tags) {
+    const tagItem = document.createElement("li");
+    const tagParagraph = document.createElement("p");
+    tagParagraph.textContent = tag;
+    tagItem.appendChild(tagParagraph);
+    tagsList.appendChild(tagItem);
+  }
+
+  // Append the elements to the postDiv
+  contentDiv.appendChild(title);
+  contentDiv.appendChild(briefParagraph);
+  postDiv.appendChild(img);
+  postDiv.appendChild(contentDiv);
+  postDiv.appendChild(tagsList);
+
+  // Append the postDiv to the container
+  container.appendChild(postDiv);
+}
+</script>
     </body>
     <br>
     <footer>

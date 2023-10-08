@@ -125,7 +125,7 @@ footer {
   pointer-events: none; /* This prevents the watermark from being clickable */
 }
 
-.topics {
+#topics {
   display: flex;
   justify-content: center;
   align-items: center;
