@@ -50,6 +50,9 @@
             </div>
             
     </main>
+    <h3> Cat fact: </h3>
+    <h3 id="fact"> 
+    </h3>
 <!--                                   Pages information                                      -->
 
 
@@ -128,7 +131,15 @@ for (const post of posts) {
 
   // Append the postDiv to the container
   container.appendChild(postDiv);
+
 }
+async function getFact(){
+    const response = await fetch("https://meowfacts.herokuapp.com/"); // fetxhing from url
+    const fact = await response.json(); // getting the json
+    paragraph = document.querySelector("#fact") // selecting our output place
+    paragraph.textContent = fact.data; // change the text to the fact
+  }
+  getFact();
 </script>
     </body>
     <br>
