@@ -6,6 +6,7 @@
         </title>
         <!--<link rel="stylesheet" href="dark_theme.css"/>-->
         <link rel="stylesheet" href="style.css"/>
+        <script src="three.min.js"></script>
     </head>
     <body>
         <main>
@@ -51,14 +52,64 @@
             <!-- Salary -->
                 <label for="salary">Salary:</label>
                 <input name="salary" id="salary" type="text"/>
-                
                 <br>
+                <br>
+
+                    <canvas id="canvas"></canvas>
                 <br>
     
                 <input type="submit" title="Send">
+
             </form>
-            
         </main>
+        <script>
+        
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(70, 10, 150, 100);
+
+            let curX;
+            let curY;
+            let isDrawing = false; // Rename 'pressed' to 'isDrawing'
+            let size = 3;
+
+            function degToRad(degrees) {
+                return degrees * Math.PI / 180;
+            }
+
+            // Update mouse pointer coordinates
+            document.addEventListener('mousemove', e => {
+                curX = e.clientX - canvas.getBoundingClientRect().left; // Adjust for canvas position
+                curY = e.clientY - canvas.getBoundingClientRect().top;  // Adjust for canvas position
+            });
+
+            canvas.addEventListener('mousedown', () => isDrawing = true);
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+
+            canvas.addEventListener('mousemove', draw); // Moved drawing logic to mousemove event
+
+            function draw() {
+                if (!isDrawing) return;
+
+                // Check if the mouse is within the bounds of the white rectangle
+                const rectX = 70;
+                const rectY = 10;
+                const rectWidth = 150;
+                const rectHeight = 100;
+
+                // start drawing
+                // checking if its in the box
+                if (curX >= rectX && curX <= rectX + rectWidth && curY >= rectY && curY <= rectY + rectHeight) {
+                    ctx.fillStyle = "black";
+                    ctx.beginPath();
+                    ctx.arc(curX, curY, size, degToRad(0), degToRad(360), false);
+                    ctx.fill();
+    }
+}
+    
+        </script>
     </body>
     <br>
     <footer>

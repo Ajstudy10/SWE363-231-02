@@ -168,3 +168,8 @@ footer {
 .tags {
   margin-right: 21px;
 }/*# sourceMappingURL=style.css.map */
+
+.canvas1{
+  display: flex;
+  justify-content: space-between; /* Align title and date to opposite sides */
+}

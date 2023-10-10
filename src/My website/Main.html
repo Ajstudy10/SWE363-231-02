@@ -65,28 +65,32 @@
 </div>
 
 <script>
+
     posts = 
-[
-    {
-        src:"Assets/Stack.png",
-        title:"Stack",
-        brief:"This data structure uses Last in First out (LIFO), which can be useful for many applications for instance: paralimeter matching and runtime code excution. Stacks can be impliment in many ways for example, it can be impliment as an array but that come in a cost of space.",
-        tags:["Data structures","Algorithms"]
-    }
-    ,
-    {
-        src:"Assets/Queue.png",
-        title:"Queue",
-        brief:"This data strucutre uses First in First out (FIFO), which can be useful for many applications for instance: data processing, networking and os. Queues can be impliment many ways for example, Circuler arrays and linked list.",
-        tags:["Data structures","Algorithms"]
-    },
-    {
-        src:"Assets/Recursion.png",
-        title:"Recursion",
-        brief:"Recursion is a technique where a function calls itself to solve a problem by breaking it down into simpler instances.",
-        tags:["Recursion","Algorithms"]
-    }
-]
+    [
+        {
+            src:"Assets/Stack.png",
+            title:"Stack",
+            brief:"This data structure uses Last in First out (LIFO), which can be useful for many applications for instance: paralimeter matching and runtime code excution. Stacks can be impliment in many ways for example, it can be impliment as an array but that come in a cost of space.",
+            tags:["Data structures","Algorithms"],
+            date:"10/10/2023"
+        }
+        ,
+        {
+            src:"Assets/Queue.png",
+            title:"Queue",
+            brief:"This data strucutre uses First in First out (FIFO), which can be useful for many applications for instance: data processing, networking and os. Queues can be impliment many ways for example, Circuler arrays and linked list.",
+            tags:["Data structures","Algorithms"],
+            date:"10/10/2023"
+        },
+        {
+            src:"Assets/Recursion.png",
+            title:"Recursion",
+            brief:"Recursion is a technique where a function calls itself to solve a problem by breaking it down into simpler instances.",
+            tags:["Recursion","Algorithms"],
+            date:"10/10/2023"
+        }
+    ]
 
 const container = document.getElementById("topics");
 
@@ -108,6 +112,10 @@ for (const post of posts) {
   title.className = "title";
   title.textContent = post.title;
 
+  const date = document.createElement("h3");
+  date.className = "date";
+  date.textContent = post.date;
+
   const briefParagraph = document.createElement("p");
   briefParagraph.textContent = post.brief;
 
@@ -123,10 +131,11 @@ for (const post of posts) {
   }
 
   // Append the elements to the postDiv
-  contentDiv.appendChild(title);
-  contentDiv.appendChild(briefParagraph);
   postDiv.appendChild(img);
+  contentDiv.appendChild(title);
+  contentDiv.appendChild(date);
   postDiv.appendChild(contentDiv);
+  postDiv.appendChild(briefParagraph);
   postDiv.appendChild(tagsList);
 
   // Append the postDiv to the container
@@ -140,6 +149,8 @@ async function getFact(){
     paragraph.textContent = fact.data; // change the text to the fact
   }
   getFact();
+
+
 </script>
     </body>
     <br>
