@@ -18,6 +18,7 @@
 <!--                           Css style                                    -->
         <!--<link rel="stylesheet" href="dark_theme.css"/>-->
         <link rel="stylesheet" href="style.css"/>
+        <script src="Assets/three.min.js"></script>
     </head>
 <!--                           Body                                      -->
     <body>
@@ -66,7 +67,7 @@
 
 <script>
 
-    posts = 
+    const posts = 
     [
         {
             src:"Assets/Stack.png",
@@ -92,66 +93,87 @@
         }
     ]
 
-const container = document.getElementById("topics");
+    const container = document.getElementById("topics");
 
-// Loop through the posts array
-for (const post of posts) {
-  // Create elements for the post
-  const postDiv = document.createElement("div");
-  postDiv.className = "topic";
+    // Loop through the posts array
+    for (const post of posts) {
+    // Create elements for the post
+    const postDiv = document.createElement("div");
+    postDiv.className = "topic";
 
-  const img = document.createElement("img");
-  img.src = post.src;
-  img.alt = "Image 1";
-  img.width = "500";
+    const img = document.createElement("img");
+    img.src = post.src;
+    img.alt = "Image 1";
+    img.width = "500";
 
-  const contentDiv = document.createElement("div");
-  contentDiv.className = "content";
+    const contentDiv = document.createElement("div");
+    contentDiv.className = "content";
 
-  const title = document.createElement("h3");
-  title.className = "title";
-  title.textContent = post.title;
+    const title = document.createElement("h3");
+    title.className = "title";
+    title.textContent = post.title;
 
-  const date = document.createElement("h3");
-  date.className = "date";
-  date.textContent = post.date;
+    const date = document.createElement("h3");
+    date.className = "date";
+    date.textContent = post.date;
 
-  const briefParagraph = document.createElement("p");
-  briefParagraph.textContent = post.brief;
+    const briefParagraph = document.createElement("p");
+    briefParagraph.textContent = post.brief;
 
-  const tagsList = document.createElement("ul");
-  tagsList.className = "tags";
+    const tagsList = document.createElement("ul");
+    tagsList.className = "tags";
 
-  for (const tag of post.tags) {
-    const tagItem = document.createElement("li");
-    const tagParagraph = document.createElement("p");
-    tagParagraph.textContent = tag;
-    tagItem.appendChild(tagParagraph);
-    tagsList.appendChild(tagItem);
-  }
+    for (const tag of post.tags) {
+        const tagItem = document.createElement("li");
+        const tagParagraph = document.createElement("p");
+        tagParagraph.textContent = tag;
+        tagItem.appendChild(tagParagraph);
+        tagsList.appendChild(tagItem);
+    }
 
-  // Append the elements to the postDiv
-  postDiv.appendChild(img);
-  contentDiv.appendChild(title);
-  contentDiv.appendChild(date);
-  postDiv.appendChild(contentDiv);
-  postDiv.appendChild(briefParagraph);
-  postDiv.appendChild(tagsList);
+    // Append the elements to the postDiv
+    postDiv.appendChild(img);
+    contentDiv.appendChild(title);
+    contentDiv.appendChild(date);
+    postDiv.appendChild(contentDiv);
+    postDiv.appendChild(briefParagraph);
+    postDiv.appendChild(tagsList);
 
-  // Append the postDiv to the container
-  container.appendChild(postDiv);
+    // Append the postDiv to the container
+    container.appendChild(postDiv);
 
-}
-async function getFact(){
-    const response = await fetch("https://meowfacts.herokuapp.com/"); // fetxhing from url
-    const fact = await response.json(); // getting the json
-    paragraph = document.querySelector("#fact") // selecting our output place
-    paragraph.textContent = fact.data; // change the text to the fact
-  }
-  getFact();
+    }
+    async function getFact(){
+        const response = await fetch("https://meowfacts.herokuapp.com/"); // fetxhing from url
+        const fact = await response.json(); // getting the json
+        paragraph = document.querySelector("#fact") // selecting our output place
+        paragraph.textContent = fact.data; // change the text to the fact
+    }
+    getFact();
 
+    let idleTimer; // timer to see how long been idle
 
+    function redirectToScreenSaver() {
+        window.location.href = 'screensaver.html'; // Redirect to the screensaver page
+    }
+
+    function resetIdleTimer() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(redirectToScreenSaver, 60000); // 1 minute (60000 milliseconds)
+    }
+
+    // checking if ideal or not
+    document.addEventListener('mousemove', () => {
+        resetIdleTimer();
+    });
+
+    document.addEventListener('keydown', () => {
+        resetIdleTimer();
+    });
+
+    resetIdleTimer();
 </script>
+
     </body>
     <br>
     <footer>
