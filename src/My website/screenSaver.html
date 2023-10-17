@@ -44,6 +44,8 @@
         }
 
         // adding each mesh
+
+        
         meshes.forEach((mesh) => {
             scene.add(mesh);
         });
@@ -53,6 +55,8 @@
 
 
         // animate and rotate + move the mesh by some random value
+
+        // Arrow function
         const animate = () => {
             requestAnimationFrame(animate);
 
@@ -65,7 +69,7 @@
             });
 
             renderer.render(scene, camera);
-        };
+        }; 
 
         animate();
 
@@ -75,6 +79,8 @@
             }
 
             // checking for movement
+
+            // Another arrow function
         document.addEventListener('mousemove', () => {
             redirectToMainPage(); // Redirect back to the main page when the mouse moves
         });
