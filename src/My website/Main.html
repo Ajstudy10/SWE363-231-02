@@ -66,6 +66,17 @@
 </div>
 
 <script>
+    
+    class post{
+        constructor(src,title,brief,tags,date){
+            this.src=src
+            this.title=title
+            this.brief=brief
+            this.tags=tags
+            this.date=date
+        }
+    }
+
 
     const posts = 
     [
@@ -96,13 +107,15 @@
     const container = document.getElementById("topics");
 
     // Loop through the posts array
-    for (const post of posts) {
+    for (const postInfo of posts) {
     // Create elements for the post
+    let postClass = new post(postInfo.src,postInfo.title,postInfo.brief,postInfo.tags,postInfo.date)
+
     const postDiv = document.createElement("div");
     postDiv.className = "topic";
 
     const img = document.createElement("img");
-    img.src = post.src;
+    img.src = postClass.src;
     img.alt = "Image 1";
     img.width = "500";
 
@@ -111,19 +124,19 @@
 
     const title = document.createElement("h3");
     title.className = "title";
-    title.textContent = post.title;
+    title.textContent = postClass.title;
 
     const date = document.createElement("h3");
     date.className = "date";
-    date.textContent = post.date;
+    date.textContent = postClass.date;
 
     const briefParagraph = document.createElement("p");
-    briefParagraph.textContent = post.brief;
+    briefParagraph.textContent = postClass.brief;
 
     const tagsList = document.createElement("ul");
     tagsList.className = "tags";
 
-    for (const tag of post.tags) {
+    for (const tag of postClass.tags) {
         const tagItem = document.createElement("li");
         const tagParagraph = document.createElement("p");
         tagParagraph.textContent = tag;
