@@ -19,6 +19,7 @@
         <!--<link rel="stylesheet" href="dark_theme.css"/>-->
         <link rel="stylesheet" href="style.css"/>
         <script src="Assets/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     </head>
 <!--                           Body                                      -->
     <body>
@@ -62,100 +63,58 @@
 </h2>
 
 <div id="topics">
-
+  <post-component v-for="post in posts" :key="post.title" :post="post"></post-component>
 </div>
 
 <script>
+    
+Vue.component('post-component', {
+      props: ['post'],
+      template: `
+        <div class="topic">
+          <img :src="post.src" alt="Image 1" width="500">
+          <div class="content">
+            <h3 class="title">{{ post.title }}</h3>
+            <h3 class="date">{{ post.date }}</h3>
+          </div>
+          <p>{{ post.brief }}</p>
+          <ul class="tags">
+            <li v-for="tag in post.tags">
+              <p>{{ tag }}</p>
+            </li>
+          </ul>
+        </div>
+      `
+    });
 
-    class post{
-        constructor(src,title,brief,tags,date){
-            this.src=src
-            this.title=title
-            this.brief=brief
-            this.tags=tags
-            this.date=date
-        }
-    }
-
-
-    const posts = 
-    [
-        {
-            src:"Assets/Stack.png",
-            title:"Stack",
-            brief:"This data structure uses Last in First out (LIFO), which can be useful for many applications for instance: paralimeter matching and runtime code excution. Stacks can be impliment in many ways for example, it can be impliment as an array but that come in a cost of space.",
-            tags:["Data structures","Algorithms"],
-            date:"10/10/2023"
-        }
-        ,
-        {
-            src:"Assets/Queue.png",
-            title:"Queue",
-            brief:"This data strucutre uses First in First out (FIFO), which can be useful for many applications for instance: data processing, networking and os. Queues can be impliment many ways for example, Circuler arrays and linked list.",
-            tags:["Data structures","Algorithms"],
-            date:"10/10/2023"
-        },
-        {
-            src:"Assets/Recursion.png",
-            title:"Recursion",
-            brief:"Recursion is a technique where a function calls itself to solve a problem by breaking it down into simpler instances.",
-            tags:["Recursion","Algorithms"],
-            date:"10/10/2023"
-        }
-    ]
-
-    const container = document.getElementById("topics");
-
-    // Loop through the posts array
-    for (const postInfo of posts) {
-    // Create elements for the post
-    let postClass = new post(postInfo.src,postInfo.title,postInfo.brief,postInfo.tags,postInfo.date)
-
-    const postDiv = document.createElement("div");
-    postDiv.className = "topic";
-
-    const img = document.createElement("img");
-    img.src = postClass.src;
-    img.alt = "Image 1";
-    img.width = "500";
-
-    const contentDiv = document.createElement("div");
-    contentDiv.className = "content";
-
-    const title = document.createElement("h3");
-    title.className = "title";
-    title.textContent = postClass.title;
-
-    const date = document.createElement("h3");
-    date.className = "date";
-    date.textContent = postClass.date;
-
-    const briefParagraph = document.createElement("p");
-    briefParagraph.textContent = postClass.brief;
-
-    const tagsList = document.createElement("ul");
-    tagsList.className = "tags";
-
-    for (const tag of postClass.tags) {
-        const tagItem = document.createElement("li");
-        const tagParagraph = document.createElement("p");
-        tagParagraph.textContent = tag;
-        tagItem.appendChild(tagParagraph);
-        tagsList.appendChild(tagItem);
-    }
-
-    // Append the elements to the postDiv
-    postDiv.appendChild(img);
-    contentDiv.appendChild(title);
-    contentDiv.appendChild(date);
-    postDiv.appendChild(contentDiv);
-    postDiv.appendChild(briefParagraph);
-    postDiv.appendChild(tagsList);
-
-    // Append the postDiv to the container
-    container.appendChild(postDiv);
-
-    }
+    new Vue({
+      el: '#topics',
+      data: {
+        posts: [
+          {
+            src: "Assets/Stack.png",
+            title: "Stack",
+            brief: "This data structure uses Last in First out (LIFO), which can be useful for many applications for instance: paralimeter matching and runtime code excution. Stacks can be impliment in many ways for example, it can be impliment as an array but that come in a cost of space.",
+            tags: ["Data structures", "Algorithms"],
+            date: "10/10/2023"
+          },
+          {
+            src: "Assets/Queue.png",
+            title: "Queue",
+            brief: "This data strucutre uses First in First out (FIFO), which can be useful for many applications for instance: data processing, networking and os. Queues can be impliment many ways for example, Circuler arrays and linked list.",
+            tags: ["Data structures", "Algorithms"],
+            date: "10/10/2023"
+          },
+          {
+            src: "Assets/Recursion.png",
+            title: "Recursion",
+            brief: "Recursion is a technique where a function calls itself to solve a problem by breaking it down into simpler instances.",
+            tags: ["Recursion", "Algorithms"],
+            date: "10/10/2023"
+          }
+        ]
+      }
+    });
     // self calling function
 (    async function getFact(){
         const response = await fetch("https://meowfacts.herokuapp.com/"); // fetxhing from url
@@ -208,7 +167,7 @@
     console.log(evens);
 
     // reduce example
-    const sum = numbers.reduce((accumulator, current) => accumulator + current, 0);
+    const sum = numbers.reduce((sum, current) => sum + current, 0);
 
     console.log(sum);
 </script>
