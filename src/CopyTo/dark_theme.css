@@ -1,0 +1,13 @@
+body{
+    background-color:  #F2ECCE;
+}
+a{
+    color:lightblue;
+    text-decoration: none;
+}
+a:visited{
+    color: lightsalmon;
+}
+a:hover{
+    font-weight: bold;
+}
