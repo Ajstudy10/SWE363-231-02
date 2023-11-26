@@ -2,13 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Home page');
-});
+const indexRouter = require('C:\\Users\\Abdullah\\OneDrive\\Desktop\\html\\src\\BE\\routes\\Home.js');
+const aboutRouter = require('C:\\Users\\Abdullah\\OneDrive\\Desktop\\html\\src\\BE\\routes\\About_me.js');
 
-app.get('/about', (req, res) => {
-    res.send('About me.');
-});
+app.use('/', indexRouter);
+app.use('/about', aboutRouter);
 
 // Start the server
 app.listen(port, () => {
